@@ -4,7 +4,8 @@ const HEALTH = 5;
 const DAMAGE = 5;
 const SPEEDMAX = 0.6;
 const SPEEDMIN = 0.4;
-const DRAG = 0.925;    
+const SIZE
+   
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
@@ -32,3 +33,12 @@ function Zombie (_x, _y)
 			this.dir = Math.atan((player.pos.y - this.pos.y) / (player.pos.x - this.pos.x));
 			if (player.pos.x - this.pos.x < 0)
 				this.dir += Math.PI;
+	    
+	//move 		
+	    this.pos.x += Math.cos(this.dir) * this.speed;
+	    this.pos.y += Math.sin(this.dir) * this.speed;
+	//attack
+	    if (Math.abs(this.pos.x - player.pos.x) < SIZE &&Math.abs(this.pos.y - player.pos.y) < SIZE)
+	    {
+				player.Hurt(//parameters);
+	    }
